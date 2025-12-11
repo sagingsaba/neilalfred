@@ -1,0 +1,41 @@
+/* -------- Reset & Base Style -------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0d1117, #1f2a48);
+    color: #fff;
+    padding: 40px;
+    text-align: center;
+}
+
+/* -------- Heading -------- */
+h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #58a6ff;
+    text-shadow: 0 0 10px rgba(88, 166, 255, 0.5);
+}
+
+/* -------- Paragraph -------- */
+p {
+    font-size: 1.2rem;
+    color: #c9d1d9;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* -------- Optional Fade-in Animation -------- */
+body {
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
