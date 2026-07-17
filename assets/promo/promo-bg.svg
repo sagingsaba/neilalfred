@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="500" viewBox="0 0 1600 500">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8B94B"/>
+      <stop offset="100%" stop-color="#2F5FFF"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="500" fill="url(#g)"/>
+  <text x="50%" y="48%" font-family="Georgia, serif" font-size="45" fill="#ffffffcc" text-anchor="middle" dominant-baseline="middle">Promo Background</text>
+  <text x="50%" y="58%" font-family="Arial, sans-serif" font-size="22" fill="#ffffff99" text-anchor="middle" dominant-baseline="middle">Replace in config.js</text>
+</svg>
