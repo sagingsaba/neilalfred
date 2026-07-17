@@ -34,11 +34,11 @@ window.SITE_CONFIG = {
   // Leave a value empty ("") to automatically hide that contact method.
   // ---------------------------------------------------------------------
   contact: {
-    email: "hello@alexrivera.com",
-    phone: "+63 917 000 0000",           // shown as text and used for tel: links
+    email: "hi.neilalfred.com",
+    // phone: "+63 917 000 0000",           // shown as text and used for tel: links
     // facebook: "https://facebook.com/alexrivera",
-    discord: "https://discord.gg/your-discord-invite", // full invite link, not just username
-    whatsapp: "https://wa.me/639170000000",       // full wa.me link with country code, no +
+    // discord: "https://discord.gg/your-discord-invite", 
+    // whatsapp: "https://wa.me/639170000000",       // full wa.me link with country code, no +
     // viber: "viber://chat?number=%2B639170000000", // viber deep link
     // telegram: "https://t.me/alexrivera",
   },
