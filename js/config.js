@@ -38,7 +38,7 @@ profile: {
   // Leave a value empty ("") to automatically hide that contact method.
   // ---------------------------------------------------------------------
   contact: {
-    email: "hi.neilalfred.com",
+    email: "hi.neilalfred@gmail.com",
     // phone: "+63 917 000 0000",           // shown as text and used for tel: links
     // facebook: "https://facebook.com/alexrivera",
     // discord: "https://discord.gg/your-discord-invite", 
