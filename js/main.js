@@ -60,6 +60,15 @@ function renderProfile() {
       ? (p.darkPhoto || p.photo)
       : p.photo;
 
+   const favicon = document.getElementById("favicon");
+
+if (favicon) {
+  favicon.href =
+    theme === "dark"
+      ? (p.darkFavicon || p.favicon || p.photo)
+      : (p.favicon || p.photo);
+}
+
   heroPhoto.alt = p.name
     ? `Portrait of ${p.name}`
     : "Portrait photo";
