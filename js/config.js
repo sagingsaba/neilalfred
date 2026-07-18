@@ -93,23 +93,21 @@ services: [
   // ---------------------------------------------------------------------
   // TESTIMONIALS
   // ---------------------------------------------------------------------
-  testimonials: [
-    {
-      quote: "Alex turned twelve hours of raw wedding footage into something we now watch every year on our anniversary. Every cut felt intentional.",
-      name: "Maria & Jonas",
-      role: "Wedding Clients",
-    },
-    {
-      quote: "We handed over a folder of unsorted b-roll and got back a launch film that our whole sales team still uses.",
-      name: "Dana Cruz",
-      role: "Marketing Lead, Northwind Co.",
-    },
-    {
-      quote: "Fast turnaround, clear communication, and the pacing on the final cut was better than what we briefed.",
-      name: "Ravi Fernandez",
-      role: "Independent Musician",
-    },
-  ],
+```js
+testimonials: [
+  {
+    quote: "Neil consistently delivered engaging gaming fact and trivia shorts with smooth pacing, strong hooks, and quick turnaround. The edits kept viewers watching until the end.",
+    name: "AmaraShortTV",
+    role: "Gaming Facts, Trivia & Entertainment",
+  },
+  {
+    quote: "The edits were clean, informative, and motivational. Neil did a great job presenting health tips, nutrition, fitness, and motivational content in a way that was easy to follow and engaging.",
+    name: "med1c1ne",
+    role: "Health, Nutrition & Fitness Creator",
+  },
+],
+```
+
 
   // ---------------------------------------------------------------------
   // PORTFOLIO PROJECTS — add as many as you like, in any order.
