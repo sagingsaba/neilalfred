@@ -93,21 +93,18 @@ services: [
   // ---------------------------------------------------------------------
   // TESTIMONIALS
   // ---------------------------------------------------------------------
-```js
-testimonials: [
+  testimonials: [
   {
-    quote: "Neil consistently delivered engaging gaming fact and trivia shorts with smooth pacing, strong hooks, and quick turnaround. The edits kept viewers watching until the end.",
+    quote: "Neil consistently delivered engaging gaming facts and trivia Shorts with strong hooks, smooth pacing, and clean edits. Every video was optimized to keep viewers watching until the very end.",
     name: "AmaraShortTV",
-    role: "Gaming Facts, Trivia & Entertainment",
+    role: "Gaming Facts & Trivia Creator",
   },
   {
-    quote: "The edits were clean, informative, and motivational. Neil did a great job presenting health tips, nutrition, fitness, and motivational content in a way that was easy to follow and engaging.",
+    quote: "Neil created clean, engaging edits that matched our fitness and healthy lifestyle content perfectly. Communication was excellent, revisions were handled quickly, and the final videos always met our expectations.",
     name: "med1c1ne",
-    role: "Health, Nutrition & Fitness Creator",
+    role: "Fitness & Healthy Lifestyle Creator",
   },
-],
-```
-
+  ],
 
   // ---------------------------------------------------------------------
   // PORTFOLIO PROJECTS — add as many as you like, in any order.
