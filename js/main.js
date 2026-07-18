@@ -55,20 +55,23 @@ function renderProfile() {
   const heroPhoto = document.getElementById("hero-photo");
   const theme = document.documentElement.getAttribute("data-theme");
 
-  heroPhoto.src =
-    theme === "dark"
-      ? (p.darkPhoto || p.photo)
-      : p.photo;
+heroPhoto.src =
+  theme === "dark"
+    ? (p.darkPhoto || p.photo)
+    : p.photo;
 
-   const favicon = document.getElementById("favicon");
+// Update favicon
+const favicon = document.getElementById("favicon");
 
 if (favicon) {
-  favicon.href =
+  const icon =
     theme === "dark"
       ? (p.darkFavicon || p.favicon || p.photo)
       : (p.favicon || p.photo);
-}
 
+  // Prevent browser favicon cache
+  favicon.href = `${icon}?v=${Date.now()}`;
+}
   heroPhoto.alt = p.name
     ? `Portrait of ${p.name}`
     : "Portrait photo";
