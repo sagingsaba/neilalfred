@@ -17,19 +17,22 @@ window.SITE_CONFIG = {
   // ---------------------------------------------------------------------
   // PROFILE / HERO
   // ---------------------------------------------------------------------
-  profile: {
-    name: "Neil Alfred",
-    title: "Shorts & Reels Editor",
-    tagline: "I create engaging and affordable YouTube Shorts for the health, entertainment, and gaming trivia niches.",
-    bio: "I edit YouTube Shorts and Instagram/Facebook Reels, specializing in short-form, vertical content. I have experience editing videos in the health, entertainment, and gaming trivia niches, turning raw footage or long-form recordings into fast-paced, hook-first videos optimized for viewer retention. I primarily use CapCut and can also provide Text-to-Speech (TTS) narration when a voice actor isn't available, along with captions, sound effects, transitions, and other enhancements to deliver polished, engaging short-form content.",
-    favicon: "assets/profile/profile.svg",
-    photo: "assets/profile/profile.svg",
-    darkPhoto: "assets/profile/profile2.svg", 
-    cvFile: "assets/cv/Neil-Alfred-CV.pdf", // put your real CV file at this path
-    location: "Philippines",
-    availability: "Available now → Ready to start immediately.",
-  },
+profile: {
+  name: "Neil Alfred",
+  title: "Shorts & Reels Editor",
+  tagline: "I create engaging and affordable YouTube Shorts for the health, entertainment, and gaming trivia niches.",
+  bio: "I edit YouTube Shorts and Instagram/Facebook Reels, specializing in short-form, vertical content. I have experience editing videos in the health, entertainment, and gaming trivia niches, turning raw footage or long-form recordings into fast-paced, hook-first videos optimized for viewer retention. I primarily use CapCut and can also provide Text-to-Speech (TTS) narration when a voice actor isn't available, along with captions, sound effects, transitions, and other enhancements to deliver polished, engaging short-form content.",
 
+  photo: "assets/profile/profile.svg",
+  darkPhoto: "assets/profile/profile2.svg",
+
+  favicon: "assets/profile/profile.svg",
+  darkFavicon: "assets/profile/profile2.svg",
+
+  cvFile: "assets/cv/Neil-Alfred-CV.pdf",
+  location: "Philippines",
+  availability: "Available now → Ready to start immediately.",
+},
   // ---------------------------------------------------------------------
   // CONTACT — edit these and every button/link/icon on the site updates.
   // Leave a value empty ("") to automatically hide that contact method.
