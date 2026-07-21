@@ -190,22 +190,49 @@ if (favicon) {
   }
 
   /* ---------------------------------------------------------------------
-     THUMBNAIL SHOWCASE
+     THUMBNAIL SHOWCASE — CAROUSEL
      ------------------------------------------------------------------- */
-  function renderThumbnails() {
-    const grid = document.getElementById("thumbnails-grid");
-    const section = document.getElementById("thumbnails");
+  let thumbCategory = "All";
+  let currentLightboxThumbs = [];
+  let lightboxIndex = 0;
+
+  function getFilteredThumbnails() {
     const thumbs = CFG.thumbnails || [];
+    return thumbCategory === "All" ? thumbs : thumbs.filter((t) => t.category === thumbCategory);
+  }
 
-    if (!grid) return;
+  function renderThumbnailChips() {
+    const wrap = document.getElementById("thumbnail-filter-chips");
+    if (!wrap) return;
+    const thumbs = CFG.thumbnails || [];
+    const categories = ["All", ...new Set(thumbs.map((t) => t.category).filter(Boolean))];
 
-    if (thumbs.length === 0) {
-      if (section) section.hidden = true;
+    if (categories.length <= 2) {
+      // Nothing meaningful to filter by — hide the chip row entirely.
+      wrap.innerHTML = "";
+      wrap.hidden = true;
       return;
     }
-    if (section) section.hidden = false;
+    wrap.hidden = false;
+    wrap.innerHTML = categories
+      .map((cat) => `<button type="button" class="chip${cat === thumbCategory ? " active" : ""}" data-category="${esc(cat)}">${esc(cat)}</button>`)
+      .join("");
 
-    grid.innerHTML = thumbs
+    wrap.querySelectorAll(".chip").forEach((chip) => {
+      chip.addEventListener("click", () => {
+        thumbCategory = chip.dataset.category;
+        renderThumbnailChips();
+        renderThumbnailTrack();
+      });
+    });
+  }
+
+  function renderThumbnailTrack() {
+    const track = document.getElementById("thumbnails-track");
+    if (!track) return;
+    const thumbs = getFilteredThumbnails();
+
+    track.innerHTML = thumbs
       .map((t) => {
         const orientation = t.orientation === "9:16" ? "916" : "169";
         const ratioClass = orientation === "916" ? "ratio-916" : "ratio-169";
@@ -222,6 +249,172 @@ if (favicon) {
       </article>`;
       })
       .join("");
+
+    currentLightboxThumbs = thumbs;
+    track.scrollTo({ left: 0 });
+    updateCarouselNav();
+  }
+
+  function renderThumbnails() {
+    const section = document.getElementById("thumbnails");
+    const thumbs = CFG.thumbnails || [];
+
+    if (!section) return;
+
+    if (thumbs.length === 0) {
+      section.hidden = true;
+      return;
+    }
+    section.hidden = false;
+
+    thumbCategory = "All";
+    renderThumbnailChips();
+    renderThumbnailTrack();
+  }
+
+  function updateCarouselNav() {
+    const track = document.getElementById("thumbnails-track");
+    const prevBtn = document.getElementById("thumb-prev");
+    const nextBtn = document.getElementById("thumb-next");
+    const progressWrap = document.getElementById("thumb-progress");
+    const bar = document.getElementById("thumb-progress-bar");
+    if (!track) return;
+
+    const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
+
+    if (prevBtn) prevBtn.disabled = track.scrollLeft <= 4;
+    if (nextBtn) nextBtn.disabled = maxScroll <= 4 || track.scrollLeft >= maxScroll - 4;
+
+    if (bar && progressWrap) {
+      if (maxScroll <= 0) {
+        progressWrap.style.visibility = "hidden";
+        return;
+      }
+      progressWrap.style.visibility = "visible";
+      const wrapWidth = progressWrap.clientWidth;
+      const visibleFraction = Math.min(1, track.clientWidth / track.scrollWidth);
+      const barWidth = Math.max(visibleFraction * wrapWidth, 24);
+      const progress = track.scrollLeft / maxScroll;
+      const left = progress * (wrapWidth - barWidth);
+      bar.style.width = `${barWidth}px`;
+      bar.style.left = `${left}px`;
+    }
+  }
+
+  function wireThumbnailCarousel() {
+    const track = document.getElementById("thumbnails-track");
+    const prevBtn = document.getElementById("thumb-prev");
+    const nextBtn = document.getElementById("thumb-next");
+    if (!track) return;
+
+    const scrollByAmount = (dir) => {
+      track.scrollBy({ left: track.clientWidth * 0.8 * dir, behavior: "smooth" });
+    };
+
+    if (prevBtn) prevBtn.addEventListener("click", () => scrollByAmount(-1));
+    if (nextBtn) nextBtn.addEventListener("click", () => scrollByAmount(1));
+
+    track.addEventListener("scroll", () => window.requestAnimationFrame(updateCarouselNav), { passive: true });
+    window.addEventListener("resize", () => updateCarouselNav());
+
+    track.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") { e.preventDefault(); scrollByAmount(1); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); scrollByAmount(-1); }
+    });
+
+    // Click-and-drag / swipe support for mouse users (touch works natively via scroll-snap)
+    let isDown = false;
+    let dragged = false;
+    let startX = 0;
+    let startScroll = 0;
+
+    track.addEventListener("pointerdown", (e) => {
+      if (e.pointerType === "touch") return; // let native touch scrolling handle this
+      isDown = true;
+      dragged = false;
+      startX = e.clientX;
+      startScroll = track.scrollLeft;
+      track.classList.add("dragging");
+      track.setPointerCapture(e.pointerId);
+    });
+
+    track.addEventListener("pointermove", (e) => {
+      if (!isDown) return;
+      const dx = e.clientX - startX;
+      if (Math.abs(dx) > 4) dragged = true;
+      track.scrollLeft = startScroll - dx;
+    });
+
+    const endDrag = () => {
+      if (!isDown) return;
+      isDown = false;
+      track.classList.remove("dragging");
+    };
+    track.addEventListener("pointerup", endDrag);
+    track.addEventListener("pointerleave", endDrag);
+    track.addEventListener("pointercancel", endDrag);
+
+    // Suppress the click that would otherwise fire on a card right after a drag
+    track.addEventListener("click", (e) => {
+      if (dragged) { e.preventDefault(); e.stopPropagation(); }
+    }, true);
+  }
+
+  /* ---------------------------------------------------------------------
+     THUMBNAIL LIGHTBOX — click a thumbnail to view it enlarged
+     ------------------------------------------------------------------- */
+  function openLightbox(index) {
+    const thumbs = currentLightboxThumbs;
+    if (!thumbs.length) return;
+    lightboxIndex = (index + thumbs.length) % thumbs.length;
+    const t = thumbs[lightboxIndex];
+
+    document.getElementById("lightbox-image").src = t.image;
+    document.getElementById("lightbox-image").alt = t.title || "Thumbnail design";
+    document.getElementById("lightbox-title").textContent = t.title || "";
+    document.getElementById("lightbox-category").textContent = t.category || "";
+
+    const nav = thumbs.length > 1;
+    document.getElementById("lightbox-prev").hidden = !nav;
+    document.getElementById("lightbox-next").hidden = !nav;
+
+    const modal = document.getElementById("thumb-lightbox");
+    modal.hidden = false;
+    document.body.style.overflow = "hidden";
+    document.getElementById("lightbox-close").focus();
+  }
+
+  function closeLightbox() {
+    const modal = document.getElementById("thumb-lightbox");
+    modal.hidden = true;
+    document.body.style.overflow = "";
+    document.getElementById("lightbox-image").src = "";
+  }
+
+  function wireLightbox() {
+    const track = document.getElementById("thumbnails-track");
+    if (track) {
+      track.addEventListener("click", (e) => {
+        const card = e.target.closest(".thumbnail-card");
+        if (!card) return;
+        const idx = Array.from(track.children).indexOf(card);
+        if (idx === -1) return;
+        openLightbox(idx);
+      });
+    }
+
+    document.getElementById("lightbox-close").addEventListener("click", closeLightbox);
+    document.getElementById("lightbox-backdrop").addEventListener("click", closeLightbox);
+    document.getElementById("lightbox-prev").addEventListener("click", () => openLightbox(lightboxIndex - 1));
+    document.getElementById("lightbox-next").addEventListener("click", () => openLightbox(lightboxIndex + 1));
+
+    document.addEventListener("keydown", (e) => {
+      const modal = document.getElementById("thumb-lightbox");
+      if (modal.hidden) return;
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowRight") openLightbox(lightboxIndex + 1);
+      if (e.key === "ArrowLeft") openLightbox(lightboxIndex - 1);
+    });
   }
 
   /* ---------------------------------------------------------------------
@@ -517,5 +710,7 @@ function getEmbedUrl(type, src) {
     wireThemeToggle();
     wireMobileNav();
     wireRevealAnimations();
+    wireThumbnailCarousel();
+    wireLightbox();
   });
 })();

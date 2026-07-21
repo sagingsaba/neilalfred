@@ -147,7 +147,24 @@
       <p class="eyebrow reveal">Also Available</p>
       <h2 class="section-title reveal">Thumbnail Design</h2>
       <p class="thumbnails-intro reveal">Custom thumbnails built for both landscape (16:9) YouTube uploads and vertical (9:16) Shorts/Reels — designed to stop the scroll and boost click-through.</p>
-      <div class="thumbnails-grid" id="thumbnails-grid"></div>
+
+      <div class="filter-chips thumbnail-filter-chips reveal" id="thumbnail-filter-chips"></div>
+
+      <div class="carousel-wrap reveal">
+        <button class="carousel-arrow carousel-prev" id="thumb-prev" type="button" aria-label="Previous thumbnails">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+
+        <div class="carousel-track" id="thumbnails-track" tabindex="0" aria-label="Thumbnail showcase, use arrow keys or drag to browse"></div>
+
+        <button class="carousel-arrow carousel-next" id="thumb-next" type="button" aria-label="Next thumbnails">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+
+      <div class="carousel-progress" id="thumb-progress" aria-hidden="true">
+        <span class="carousel-progress-bar" id="thumb-progress-bar"></span>
+      </div>
     </div>
   </section>
 
@@ -223,6 +240,25 @@
       </div>
     </div>
   </div>
+</div>
+
+<!-- ============================= THUMBNAIL LIGHTBOX ============================= -->
+<div class="lightbox" id="thumb-lightbox" role="dialog" aria-modal="true" aria-label="Enlarged thumbnail" hidden>
+  <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
+  <button class="lightbox-close" id="lightbox-close" aria-label="Close enlarged image">&times;</button>
+  <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous thumbnail" type="button">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <div class="lightbox-panel">
+    <img id="lightbox-image" src="" alt="">
+    <div class="lightbox-info">
+      <p class="lightbox-title" id="lightbox-title"></p>
+      <p class="lightbox-category" id="lightbox-category"></p>
+    </div>
+  </div>
+  <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next thumbnail" type="button">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
 </div>
 
 <script src="js/config.js"></script>
