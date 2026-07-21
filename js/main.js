@@ -190,6 +190,41 @@ if (favicon) {
   }
 
   /* ---------------------------------------------------------------------
+     THUMBNAIL SHOWCASE
+     ------------------------------------------------------------------- */
+  function renderThumbnails() {
+    const grid = document.getElementById("thumbnails-grid");
+    const section = document.getElementById("thumbnails");
+    const thumbs = CFG.thumbnails || [];
+
+    if (!grid) return;
+
+    if (thumbs.length === 0) {
+      if (section) section.hidden = true;
+      return;
+    }
+    if (section) section.hidden = false;
+
+    grid.innerHTML = thumbs
+      .map((t) => {
+        const orientation = t.orientation === "9:16" ? "916" : "169";
+        const ratioClass = orientation === "916" ? "ratio-916" : "ratio-169";
+        return `
+      <article class="thumbnail-card orientation-${orientation} reveal in-view">
+        <div class="thumbnail-media ${ratioClass}">
+          <img src="${esc(t.image)}" alt="${esc(t.title || "Thumbnail design")}" loading="lazy">
+          <span class="thumbnail-ratio-badge">${esc(t.orientation || "16:9")}</span>
+        </div>
+        <div class="thumbnail-body">
+          <p class="thumbnail-title">${esc(t.title || "")}</p>
+          <p class="thumbnail-category">${esc(t.category || "")}</p>
+        </div>
+      </article>`;
+      })
+      .join("");
+  }
+
+  /* ---------------------------------------------------------------------
      TESTIMONIALS
      ------------------------------------------------------------------- */
   function renderTestimonials() {
@@ -470,6 +505,7 @@ function getEmbedUrl(type, src) {
     renderContact();
     renderPromo();
     renderServices();
+    renderThumbnails();
     renderTestimonials();
     renderFilterChips();
     renderPortfolioGrid();

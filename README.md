@@ -24,6 +24,13 @@ Highlights:
   There's no limit to how many you add — the grid, search, and category
   filters update automatically.
 - **Services / testimonials**: same pattern — add, remove, or edit array items.
+- **Thumbnail showcase**: edit the `thumbnails` array to display your YouTube
+  thumbnail design work, separate from your video portfolio. Each entry needs
+  `image`, `title`, `category`, and `orientation` (`"16:9"` for landscape
+  YouTube thumbnails or `"9:16"` for Shorts/Reels). The grid keeps each
+  image's real aspect ratio — no cropping — so landscape and vertical
+  thumbnails both display correctly side by side. Leave the array empty
+  (`thumbnails: []`) to hide the section entirely.
 
 ## Replacing placeholder images
 
@@ -33,6 +40,9 @@ path in `config.js`):
 
 - `assets/profile/profile.svg` → your headshot (JPG/PNG/WebP all work)
 - `assets/projects/project-*.svg` → project thumbnails
+- `assets/thumbnails/thumb-*.svg` → thumbnail showcase images (placeholders
+  are 1280×720 for 16:9 and 720×1280 for 9:16 — match those dimensions,
+  or any image with the same aspect ratio, for a clean fit)
 - `assets/promo/promo-bg.svg` → promo banner background
 - `assets/cv/` → drop your CV PDF here and point `profile.cvFile` at it
 - `assets/videos/` → drop uploaded MP4s here for projects using `videoType: "upload"`
@@ -68,6 +78,7 @@ js/config.js          → EDIT THIS — all editable content
 js/main.js            → renders config.js into the page, handles interactivity
 assets/profile/       → headshot
 assets/projects/      → project thumbnails
+assets/thumbnails/     → thumbnail showcase images (16:9 + 9:16)
 assets/promo/         → promo banner background
 assets/cv/             → your downloadable CV
 assets/videos/          → self-hosted MP4 project files

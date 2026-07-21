@@ -21,7 +21,7 @@ profile: {
   name: "Neil Alfred",
   title: "Shorts & Reels Editor",
   tagline: "I create engaging and affordable YouTube Shorts for the health, entertainment, and gaming trivia niches.",
-  bio: "I edit YouTube Shorts and Instagram/Facebook Reels, specializing in short-form, vertical content. I have experience editing videos in the health, entertainment, and gaming trivia niches, turning raw footage or long-form recordings into fast-paced, hook-first videos optimized for viewer retention. I primarily use CapCut and can also provide Text-to-Speech (TTS) narration when a voice actor isn't available, along with captions, sound effects, transitions, and other enhancements to deliver polished, engaging short-form content.",
+  bio: "I edit YouTube Shorts and Instagram/Facebook Reels, specializing in short-form, vertical content. I have experience editing videos in the health, entertainment, and gaming trivia niches, turning raw footage or long-form recordings into fast-paced, hook-first videos optimized for viewer retention. I primarily use CapCut and can also provide Text-to-Speech (TTS) narration when a voice actor isn't available, along with captions, sound effects, transitions, and other enhancements to deliver polished, engaging short-form content. I also design scroll-stopping YouTube thumbnails in both 16:9 (landscape uploads) and 9:16 (Shorts/Reels) formats to help boost click-through rate.",
 
   photo: "assets/profile/profile.svg",
   darkPhoto: "assets/profile/profile2.svg",
@@ -88,6 +88,11 @@ services: [
     description: "Need a voiceover? I can generate natural-sounding AI voices when a voice actor isn't available.",
     icon: "microphone-lines", // More modern than "mic"
   },
+  {
+    title: "Thumbnail Design",
+    description: "Scroll-stopping thumbnails designed in both 16:9 (YouTube landscape) and 9:16 (Shorts/Reels) formats to maximize click-through.",
+    icon: "palette",
+  },
 ],
 
   // ---------------------------------------------------------------------
@@ -101,8 +106,14 @@ services: [
   },
   {
     quote: "Neil created clean, engaging edits that matched our fitness and healthy lifestyle content perfectly. Communication was excellent, revisions were handled quickly, and the final videos always met our expectations.",
-    name: "med1c1ne",
+    name: "Med1c1ne",
     role: "Fitness & Healthy Lifestyle Creator",
+  },
+
+   {
+    quote: "Neil consistently designed eye-catching Gacha Life thumbnails with bold visuals, clear composition, and expressive characters. Every thumbnail was crafted to grab attention and improve click-through rates.",
+    name: "MrBipBapp",
+    role: "Gacha Life Entertainment Creator",
   },
   ],
 
@@ -224,5 +235,182 @@ projects: [
   videoSrc: "https://drive.google.com/file/d/1XW0Dg9OrTRr7_ozY-51tB4w5KsQOLHQv/view?usp=drive_link",
   category: "Gaming",
 },
-]
+{
+  id: "gym_fitness_motivation_short36",
+  title: "Debunking Fitness Myths — Short",
+  thumbnail: "https://drive.google.com/thumbnail?id=1fh_wxhUjcjvdsF0B0mW93t6PHL-ZhHYv&sz=w1200",
+  videoType: "gdrive",
+  videoSrc: "https://drive.google.com/file/d/1fh_wxhUjcjvdsF0B0mW93t6PHL-ZhHYv/view?usp=drive_link",
+  category: "Health & Fitness",
+},
+
+{
+  id: "gym_fitness_motivation_short51",
+  title: "Overcome Laziness — Short",
+  thumbnail: "https://drive.google.com/thumbnail?id=1XmK1gdnpbKF_d4ZFP7tXnyDZt7zCDkzN&sz=w1200",
+  videoType: "gdrive",
+  videoSrc: "https://drive.google.com/file/d/1XmK1gdnpbKF_d4ZFP7tXnyDZt7zCDkzN/view?usp=sharing",
+  category: "Health & Fitness",
+},
+
+{
+  id: "gym_fitness_motivation_short12",
+  title: "Saitama Workout — Short",
+  thumbnail: "https://drive.google.com/thumbnail?id=17jggNCbZuuzgykMLKQozpLVsp2cS2ye0&sz=w1200",
+  videoType: "gdrive",
+  videoSrc: "https://drive.google.com/file/d/17jggNCbZuuzgykMLKQozpLVsp2cS2ye0/view?usp=drive_link",
+  category: "Health & Fitness",
+},
+
+{
+  id: "gym_fitness_motivation_short17",
+  title: "Banana Benefits — Short",
+  thumbnail: "https://drive.google.com/thumbnail?id=1DIlTe5ByHVNZcAfb9_s2XHnVRawUOPDC&sz=w1200",
+  videoType: "gdrive",
+  videoSrc: "https://drive.google.com/file/d/1DIlTe5ByHVNZcAfb9_s2XHnVRawUOPDC/view?usp=drive_link",
+  category: "Health & Fitness",
+}
+
+],
+
+  // ---------------------------------------------------------------------
+  // THUMBNAIL SHOWCASE — separate from video projects above.
+  // orientation: "16:9" (YouTube landscape) | "9:16" (Shorts/Reels)
+  // Add/remove/reorder freely — the grid updates automatically and keeps
+  // each image's real aspect ratio (no cropping/distortion).
+  // ---------------------------------------------------------------------
+  thumbnails: [
+{
+  image: "assets/thumbnails/1.png",
+  title: "Gacha Life Channel — Landscape Thumbnail",
+  category: "Entertainment",
+  orientation: "16:9",
+},
+{
+  image: "assets/thumbnails/2.png",
+  title: "Gacha Life Channel — Landscape Thumbnail",
+  category: "Entertainment",
+  orientation: "16:9",
+},
+{
+  image: "assets/thumbnails/3.png",
+  title: "Gacha Life Channel — Landscape Thumbnail",
+  category: "Entertainment",
+  orientation: "16:9",
+},
+{
+  image: "assets/thumbnails/4.png",
+  title: "Gacha Life Channel — Landscape Thumbnail",
+  category: "Entertainment",
+  orientation: "16:9",
+},
+{
+  image: "assets/thumbnails/5.png",
+  title: "Gacha Life Channel — Landscape Thumbnail",
+  category: "Entertainment",
+  orientation: "16:9",
+},
+{
+  image: "assets/thumbnails/6.png",
+  title: "Gacha Life Channel — Landscape Thumbnail",
+  category: "Entertainment",
+  orientation: "16:9",
+},
+{
+  image: "assets/thumbnails/7.png",
+  title: "Gacha Life Channel — Landscape Thumbnail",
+  category: "Entertainment",
+  orientation: "16:9",
+},
+{
+  image: "assets/thumbnails/8.png",
+  title: "Gacha Life Channel — Landscape Thumbnail",
+  category: "Entertainment",
+  orientation: "16:9",
+},
+{
+  image: "assets/thumbnails/9.png",
+  title: "Gacha Life Channel — Landscape Thumbnail",
+  category: "Entertainment",
+  orientation: "16:9",
+},
+{
+  image: "assets/thumbnails/10.png",
+  title: "Gacha Life Channel — Landscape Thumbnail",
+  category: "Entertainment",
+  orientation: "16:9",
+},
+{
+  image: "assets/thumbnails/11.png",
+  title: "Gacha Life Channel — Landscape Thumbnail",
+  category: "Entertainment",
+  orientation: "16:9",
+},
+{
+  image: "assets/thumbnails/12.png",
+  title: "Gacha Life Channel — Landscape Thumbnail",
+  category: "Entertainment",
+  orientation: "16:9",
+},
+{
+  image: "assets/thumbnails/13.png",
+  title: "Gacha Life Channel — Landscape Thumbnail",
+  category: "Entertainment",
+  orientation: "16:9",
+},
+{
+  image: "assets/thumbnails/14.png",
+  title: "Gacha Life Channel — Landscape Thumbnail",
+  category: "Entertainment",
+  orientation: "16:9",
+},
+{
+  image: "assets/thumbnails/15.png",
+  title: "Gacha Life Channel — Landscape Thumbnail",
+  category: "Entertainment",
+  orientation: "16:9",
+},
+{
+  image: "assets/thumbnails/16.png",
+  title: "Stardew Valley Channel — Landscape Thumbnail",
+  category: "Gaming",
+  orientation: "16:9",
+},
+{
+  image: "assets/thumbnails/17.png",
+  title: "Stardew Valley Channel — Landscape Thumbnail",
+  category: "Gaming",
+  orientation: "16:9",
+},
+{
+  image: "assets/thumbnails/18.png",
+  title: "Riddle Channel — Landscape Thumbnail",
+  category: "Entertainment",
+  orientation: "16:9",
+},
+{
+  image: "assets/thumbnails/19.png",
+  title: "Riddle Channel — Landscape Thumbnail",
+  category: "Entertainment",
+  orientation: "16:9",
+},
+{
+  image: "assets/thumbnails/20.png",
+  title: "Riddle Channel — Landscape Thumbnail",
+  category: "Entertainment",
+  orientation: "16:9",
+},
+{
+  image: "assets/thumbnails/21.png",
+  title: "Riddle Channel — Landscape Thumbnail",
+  category: "Entertainment",
+  orientation: "16:9",
+},
+    // {
+    //   image: "assets/thumbnails/thumb-3.svg",
+    //   title: "Fitness Short — Vertical Thumbnail",
+    //   category: "Health",
+    //   orientation: "9:16",
+    // },
+  ],
 };
